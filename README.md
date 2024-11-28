@@ -457,5 +457,165 @@ ExitProgram():
 
 ---
 
-### **Conclusion**:
-This flowchart and pseudocode outline the functionality and flow for the customer panel in a food ordering system. It provides a straightforward way to interact with the system, allowing customers to view dishes, place orders, cancel orders, and search for dishes. The flowchart and pseudocode are designed to ensure that each step is clear and that the user experience is smooth and logical.
+
+###2 
+I chose **arrays of structures** to handle dishes and orders in this program because they allow me to store different types of data (such as `int`, `char`, `float`) together in a single array. Each structure, like `Dish` and `Order`, encapsulates all related information: for example, the `Dish` structure includes `char` for the dish ID and name, `float` for price, and `int` for preparation time. Similarly, the `Order` structure stores customer details, order ID, and order status.
+
+Using arrays of structures offers several advantages. First, it simplifies data management, as each array element is a complete record (dish or order) containing all the necessary fields. Arrays allow easy indexing to access, update, or remove specific records. This method also avoids the complexity of dynamic memory allocation, which makes the code more manageable and easier to maintain. Overall, using structures provides an organized and efficient way to store and manipulate multiple types of data within a single array, making it ideal for this application.
+
+### **Project Plan for Restaurant Order Management System**
+
+---
+
+#### **1. Project Overview:**
+
+This project involves developing a **Restaurant Order Management System** that allows two types of users: **Customers** and **Admins**. The system will enable customers to place and manage their orders, while admins will have the ability to manage the menu and generate sales reports. The program interacts with two main text files: `dishes.txt` for menu items and `orders.txt` for customer orders.
+
+---
+
+#### **2. Requirements List:**
+
+The following are the key requirements for this project:
+
+1. **User Authentication**:
+   - Admin users must authenticate using a username and password.
+   
+2. **Admin Functionalities**:
+   - View all dishes in the menu.
+   - Add new dishes to the menu.
+   - Update existing dishes (name, description, price, preparation time).
+   - Delete dishes from the menu.
+   - Search for dishes by name.
+   - Generate a sales report showing total revenue from orders.
+   
+3. **Customer Functionalities**:
+   - View available dishes.
+   - Place orders by selecting a dish and specifying quantity.
+   - View current orders.
+   - Cancel placed orders.
+   - Search for dishes by name.
+   
+4. **Data Storage**:
+   - All dish information will be stored in a file named `dishes.txt`.
+   - All order information will be stored in a file named `orders.txt`.
+   
+5. **Sales Reporting**:
+   - Admin should be able to generate a report showing the total sales from orders.
+   
+6. **File Handling**:
+   - The program will read from and write to `dishes.txt` and `orders.txt` to handle menu and order data.
+
+7. **User Interface**:
+   - The system will have a text-based menu where users can select options to perform the various tasks.
+
+---
+
+#### **3. How Requirements Will Be Satisfied:**
+
+1. **User Authentication**:
+   - The system will prompt the admin for a username and password. If the credentials match predefined values (e.g., "admin" and "password123"), the admin will be granted access to the admin menu. If the credentials are incorrect, access will be denied.
+   - The customer will be able to use the system directly without authentication.
+
+2. **Admin Functionalities**:
+   - **View All Dishes**: Admin can view all dishes stored in `dishes.txt`. The system will use `awk` to format and display the dish information.
+   - **Add New Dish**: Admin can add a new dish by entering its details (ID, name, description, price, preparation time). The new dish will be appended to `dishes.txt` using the `echo` command.
+   - **Update Existing Dish**: Admin can search for a dish by ID and update its details using the `sed` command.
+   - **Delete Dish**: Admin can delete a dish from `dishes.txt` using `sed` to remove the line corresponding to the dish ID.
+   - **Search Dishes**: Admin can search for dishes by name using `grep` to find matching records in `dishes.txt`.
+   - **Generate Sales Report**: Admin can view a sales report, which sums the total revenue from orders in `orders.txt` using `awk`.
+
+3. **Customer Functionalities**:
+   - **View Dishes**: Customers can view the list of dishes available for order, displayed using `awk` from `dishes.txt`.
+   - **Place Order**: Customers can select a dish, specify the quantity, and the system will calculate the total cost based on the dish's price and quantity. A new order will be added to `orders.txt` using the `echo` command.
+   - **View Orders**: Customers can view the details of their placed orders, extracted from `orders.txt` using `awk`.
+   - **Cancel Order**: Customers can cancel an order by entering its ID. The system will use `sed` to mark the order as "canceled" in `orders.txt`.
+   - **Search for Dishes**: Customers can search for dishes by name using `grep`.
+
+4. **Data Storage**:
+   - **`dishes.txt`** will contain menu data, including dish IDs, names, descriptions, prices, and preparation times.
+   - **`orders.txt`** will contain order data, including order IDs, customer details, dish ID, quantity, total cost, and order status (e.g., "Pending" or "Canceled").
+   - These files will be updated and queried using bash commands like `echo`, `sed`, `awk`, and `grep`.
+
+5. **Sales Reporting**:
+   - **Admin** can generate a sales report by using an `awk` command that reads through `orders.txt`, calculates the total sales, and displays it along with individual order details.
+
+6. **File Handling**:
+   - The program will interact with `dishes.txt` and `orders.txt` through bash commands to read, write, update, and delete data as required by the operations being performed.
+
+7. **User Interface**:
+   - The system will provide a text-based menu for both **Admin** and **Customer**:
+     - The admin menu will offer options to manage dishes, view dishes, and generate sales reports.
+     - The customer menu will offer options to view dishes, place orders, cancel orders, and view their orders.
+
+---
+
+#### **4. Plan for Implementation:**
+
+The development of the project will be carried out in several phases:
+
+1. **Phase 1: System Design & Setup**
+   - Define the structure of `dishes.txt` and `orders.txt` files.
+   - Design the user interface (menus for Admin and Customer).
+   - Set up functions for viewing, adding, and deleting dishes from `dishes.txt`.
+
+2. **Phase 2: Order Management Features**
+   - Implement order placement functionality (add order to `orders.txt`).
+   - Implement order cancellation functionality (mark order as canceled in `orders.txt`).
+   - Implement the order display function (view orders placed by customers).
+
+3. **Phase 3: Admin Features**
+   - Implement the functionality for searching, adding, updating, and deleting dishes.
+   - Implement sales reporting functionality to calculate total sales using `awk`.
+
+4. **Phase 4: Testing & Debugging**
+   - Test all functionalities (order placement, dish management, report generation).
+   - Debug any issues that arise during testing.
+
+5. **Phase 5: Final Review & Deployment**
+   - Conduct a final review of the program and ensure that all features are working correctly.
+   - Prepare documentation for users (Admin and Customer) on how to use the system.
+
+---
+
+#### **5. Conclusion:**
+
+By following the outlined project plan, this **Restaurant Order Management System** will be developed to meet all functional requirements. The use of bash commands for file manipulation and data processing ensures that the system remains lightweight and efficient. This plan provides a clear roadmap for the development of the system, from the initial design phase to final deployment.
+
+Sure, here are concise answers for each question:
+
+### 1. **How does memory management play a role in the structured programming design of the food delivery system?**
+
+Memory management is essential for optimizing the resources in the food delivery system. Structured programming involves breaking down the program into logical blocks, and efficient memory management ensures that each block has the appropriate memory allocated to it. For instance, dynamically allocating memory for customer orders or dish details helps the system handle unpredictable data sizes without wasting resources. This makes the program more scalable and avoids memory overflow or exhaustion, ensuring smooth operations.
+
+### 2. **Would dynamic memory allocation be necessary for handling orders?**
+
+Yes, dynamic memory allocation is necessary for handling orders in a food delivery system. Since the number of orders placed at any time can vary, dynamically allocating memory for each order (such as customer details, order items, and prices) allows the system to efficiently store and manage data without reserving excessive memory. As each order is created or modified, memory can be allocated or freed as needed.
+
+### 3. **How would you avoid memory leaks in such a system?**
+
+To avoid memory leaks, the system must ensure that all dynamically allocated memory is properly freed after it's no longer needed. This can be achieved by using functions such as `free()` in C to release memory that was previously allocated using functions like `malloc()` or `calloc()`. It's also important to set pointers to `NULL` after freeing them, which prevents accidental access to deallocated memory. Additionally, using proper memory management tools, like memory debuggers (e.g., Valgrind), can help identify any memory leaks during the development phase. Regularly testing the system for memory usage is essential for maintaining its stability.
+
+### 4. **Why is dynamic memory allocation important for this system?**
+
+Dynamic memory allocation is important because it provides flexibility in handling various amounts of data. The food delivery system's size and number of orders will change over time, and dynamic allocation allows it to use only the memory that is actually needed. This reduces the risk of memory waste (when data does not require fixed-sized memory) and ensures that resources are efficiently managed, especially when handling large datasets like orders, customer details, and menu items.
+
+### What I Have Learned
+
+- **Structured Programming**: Learned to modularize code in C for better maintenance and readability.
+- **Bash Integration**: Used Bash for file handling and system-level operations, improving automation and efficiency.
+- **File Management**: Gained experience managing data with text files (`dishes.txt`, `orders.txt`) and using tools like `awk`, `grep`, and `sed`.
+- **Memory Management**: Learned that while static arrays suffice for simple systems, dynamic memory allocation (`malloc`, `free`) is crucial for scalability.
+
+### System Improvements and Development
+
+- **Database Integration**: Move from text files to a relational database for better performance, scalability, and data integrity.
+- **User Authentication**: Implement secure password hashing and role-based access control (RBAC).
+- **Dynamic Memory**: Use dynamic memory allocation for handling large data sets and prevent memory leaks.
+- **Payment Gateway**: Integrate online payment systems (e.g., Stripe, PayPal) for secure transactions.
+- **UI Enhancement**: Transition from text-based to GUI or mobile interface for improved user experience.
+- **Order Tracking**: Implement real-time status updates and notifications for customers.
+- **Analytics**: Add sales analytics and data visualization for performance insights.
+- **Scalability**: Improve load handling with cloud infrastructure and optimization techniques.
+
+By making these improvements, the system would be more robust, secure, and scalable, offering a better user experience and easier management.
+
